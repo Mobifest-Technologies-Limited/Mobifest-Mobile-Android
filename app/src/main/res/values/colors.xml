@@ -8,9 +8,8 @@
     <color name="lightGrayColor">#fafafa</color>
     <color name="whiteColor">#fff</color>
     <color name="appBackGroundColor">#D6DBDF</color>
-<!--    <color name="blueColor">#6495ED</color>-->
     <color name="buttonBlueColor">#0071CE</color>
     <color name="blueColor">#0071ce</color>
-
+    <color name="redColor">#FF0000</color>
 
 </resources>

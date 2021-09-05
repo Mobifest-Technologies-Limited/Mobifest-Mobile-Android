@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".About"/>
+        <activity android:name=".About" />
         <activity android:name=".AddStock" />
         <activity android:name=".Shoes" />
         <activity android:name=".BottomWear" />
@@ -34,6 +34,12 @@
             android:name=".HomePageActivity"
             android:label="@string/title_activity_home_page"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".ui.UserHomeActivity"
+            android:label="@string/title_activity_home_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".RegisterPage" />
         <activity android:name=".LoginPage" />
         <activity android:name=".MainActivity" />

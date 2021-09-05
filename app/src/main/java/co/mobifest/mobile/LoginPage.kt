@@ -2,61 +2,46 @@ package co.mobifest.mobile
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import co.mobifest.mobile.ui.UserHomeActivity
 import com.google.android.material.button.MaterialButton
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 
 class LoginPage : AppCompatActivity() {
-    var phoneno: EditText? = null
-    var pass: EditText? = null
-    var login: MaterialButton? = null
+    lateinit var userNameEt: EditText
+    lateinit var passwordEt: EditText
+    lateinit var loginBtn: MaterialButton
     lateinit var registerLink: TextView
+    lateinit var userName: String
+    lateinit var userPassword: String
     var status: TextView? = null
-    var ph: String? = null
-    var pa: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
-        phoneno = findViewById<View>(R.id.logphone) as EditText
-        pass = findViewById<View>(R.id.logpass) as EditText
-        login = findViewById(R.id.btnlogin)
+        userNameEt = findViewById(R.id.login_user_name)
+        passwordEt = findViewById(R.id.login_user_password)
+        loginBtn = findViewById(R.id.btnlogin)
         registerLink = findViewById(R.id.tvreg)
-        status = findViewById<View>(R.id.tvstatus) as TextView
+        status = findViewById(R.id.tvstatus)
         status!!.text = ""
-        login!!.setOnClickListener {
-            RegisterPage.getuser()
-            ph = phoneno!!.text.toString()
-            pa = pass!!.text.toString()
-            RegisterPage.databaseUsers.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    var x = 0
-                    for (userSnapshot in dataSnapshot.children) {
-                        val memberReg = userSnapshot.getValue(MemberReg::class.java)!!
-                        val dpn = memberReg.getUsername()
-                        val dph = memberReg.getPhone()
-                        val dpa = memberReg.getPassword()
-                        if (dph == ph && dpa == pa) {
-                            val i = Intent(this@LoginPage, HomePageActivity::class.java)
-                            i.putExtra("NAME", dpn)
-                            i.putExtra("PHONE", dph)
-                            i.putExtra("PASSWORD", dpa)
-                            i.putExtra("CALLINGACTIVITY", "LoginPage")
-                            startActivity(i)
-                            x = 1
-                        }
-                    }
-                    if (x == 0) status!!.text = "Invalid Credentials"
-                }
+        loginBtn.setOnClickListener {
 
-                override fun onCancelled(databaseError: DatabaseError) {}
-            })
+            userName = userNameEt.text.toString()
+            userPassword = passwordEt.text.toString()
+            if (userName == "user123" && userPassword == "user123") {
+                val i = Intent(this@LoginPage, UserHomeActivity::class.java)
+                i.putExtra("NAME", userName)
+                i.putExtra("PHONE", userName)
+                i.putExtra("PASSWORD", userPassword)
+                i.putExtra("CALLINGACTIVITY", "LoginPage")
+                startActivity(i)
+            } else {
+                status!!.text = "Invalid Credentials"
+            }
+
         }
-        registerLink.setOnClickListener{
+        registerLink.setOnClickListener {
             val intent = Intent(this@LoginPage, RegisterPage::class.java)
             startActivity(intent)
         }
