@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#e91e63</color>
-    <color name="colorPrimaryDark">#e91e63</color>
-    <color name="colorAccent">#e91e63</color>
+    <color name="colorPrimary">#0071CE</color>
+    <color name="colorPrimaryDark">#0071CE</color>
+    <color name="colorAccent">#0071CE</color>
     <color name="blackColor">#000</color>
     <color name="grayColor">#a9a9a9</color>
     <color name="lightGrayColor">#fafafa</color>
     <color name="whiteColor">#fff</color>
+    <color name="appBackGroundColor">#D6DBDF</color>
+<!--    <color name="blueColor">#6495ED</color>-->
+    <color name="buttonBlueColor">#0071CE</color>
+    <color name="blueColor">#0071ce</color>
+
+
 </resources>

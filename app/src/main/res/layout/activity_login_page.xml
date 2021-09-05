@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginpage"
+    android:background="@color/appBackGroundColor"
+    android:padding="8dp"
     tools:context=".LoginPage">
 
     <ImageView
@@ -17,15 +18,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.135"
-        app:srcCompat="@drawable/applogo_" />
+        app:srcCompat="@mipmap/mob_logo" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnlogin"
-        android:layout_width="358dp"
-        android:layout_height="53dp"
-        android:backgroundTint="#A1E91E63"
-        android:text="Login"
-        android:textColor="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_button"
+        android:padding="8dp"
+        android:text="Enter"
+        android:textAllCaps="false"
+        android:textColor="@color/whiteColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
@@ -33,15 +36,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.749" />
 
+    <TextView
+        android:id="@+id/tvreg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="New User? Register Here"
+        android:textAllCaps="false"
+        android:textColor="@color/blueColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.825" />
+
     <EditText
         android:id="@+id/logphone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter your phone no"
-        android:inputType="number"
-        android:textColor="#e91e63"
-        android:textColorHint="#e91e63"
+        android:inputType="phone"
+        android:textColorHint="@color/blackColor"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,8 +76,7 @@
         android:ems="10"
         android:hint="Enter your pasword"
         android:inputType="textPassword"
-        android:textColor="#e91e63"
-        android:textColorHint="#e91e63"
+        android:textColorHint="@color/blackColor"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
