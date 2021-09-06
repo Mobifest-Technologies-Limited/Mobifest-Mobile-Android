@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         stflog = findViewById(R.id.stflog)
         about = findViewById(R.id.tvAbout)
         log!!.setOnClickListener {
-            val intent = Intent(this@MainActivity, LoginPage::class.java)
+            val intent = Intent(this@MainActivity, UserLoginActivity::class.java)
             startActivity(intent)
         }
         admlog!!.setOnClickListener { startActivity(Intent(this@MainActivity, AdminLogin::class.java)) }

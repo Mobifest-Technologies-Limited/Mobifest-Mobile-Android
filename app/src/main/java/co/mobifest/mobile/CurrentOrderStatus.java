@@ -73,8 +73,8 @@ public class CurrentOrderStatus extends AppCompatActivity {
         if(TextUtils.isEmpty(custPass.getText().toString()))
             Toast.makeText(this,"Please enter the customer's password",Toast.LENGTH_SHORT).show();
         else{
-            RegisterPage.getuser();
-            RegisterPage.databaseUsers.addValueEventListener(new ValueEventListener() {
+            UserRegisterActivity.getuser();
+            UserRegisterActivity.databaseUsers.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for(DataSnapshot userSnapshot:dataSnapshot.getChildren()){

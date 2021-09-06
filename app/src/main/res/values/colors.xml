@@ -11,5 +11,11 @@
     <color name="buttonBlueColor">#0071CE</color>
     <color name="blueColor">#0071ce</color>
     <color name="redColor">#FF0000</color>
+    <color name="textBlackColor">#3F4254</color>
+    <color name="orangeColor">#ff7f30</color>
+
+
+
+
 
 </resources>

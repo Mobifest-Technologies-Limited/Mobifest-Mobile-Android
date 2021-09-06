@@ -125,7 +125,7 @@ Button clothing,electronics,books,otherItems;
                 || super.onSupportNavigateUp();
     }
     public void onBackPressed(){
-        startActivity(new Intent(HomePageActivity.this, LoginPage.class));
+        startActivity(new Intent(HomePageActivity.this, UserLoginActivity.class));
     }
     public static void getOrder(){
         databaseOrders=FirebaseDatabase.getInstance().getReference("orders");
