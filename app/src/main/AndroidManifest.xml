@@ -31,7 +31,7 @@
         <activity android:name=".AdminHomePage" />
         <activity android:name=".AdminLogin" />
         <activity
-            android:name=".HomePageActivity"
+            android:name=".ui.shopping.HomePageActivity"
             android:label="@string/title_activity_home_page"
             android:theme="@style/AppTheme.NoActionBar" />
 

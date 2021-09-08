@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-
+import co.mobifest.mobile.ui.shopping.HomePageActivity;
 
 
 public class Clothing extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package co.mobifest.mobile;
+package co.mobifest.mobile.ui.shopping;
 
 
 import android.content.Intent;
@@ -25,6 +25,13 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.Toast;
+
+import co.mobifest.mobile.Books;
+import co.mobifest.mobile.Clothing;
+import co.mobifest.mobile.Electronics;
+import co.mobifest.mobile.OtherItems;
+import co.mobifest.mobile.R;
+import co.mobifest.mobile.ui.UserHomeActivity;
 
 public class HomePageActivity extends AppCompatActivity {
 Button clothing,electronics,books,otherItems;
@@ -70,7 +77,7 @@ Button clothing,electronics,books,otherItems;
         clothing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(HomePageActivity.this,Clothing.class);
+                Intent intent=new Intent(HomePageActivity.this, Clothing.class);
                 intent.putExtra("NAME",sna);
                 intent.putExtra("PHONE",sph);
                 intent.putExtra("PASSWORD",spa);
@@ -80,7 +87,7 @@ Button clothing,electronics,books,otherItems;
         electronics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(HomePageActivity.this,Electronics.class);
+                Intent intent=new Intent(HomePageActivity.this, Electronics.class);
                 intent.putExtra("NAME",sna);
                 intent.putExtra("PHONE",sph);
                 intent.putExtra("PASSWORD",spa);
@@ -90,7 +97,7 @@ Button clothing,electronics,books,otherItems;
         books.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(HomePageActivity.this,Books.class);
+                Intent intent=new Intent(HomePageActivity.this, Books.class);
                 intent.putExtra("NAME",sna);
                 intent.putExtra("PHONE",sph);
                 intent.putExtra("PASSWORD",spa);
@@ -125,7 +132,7 @@ Button clothing,electronics,books,otherItems;
                 || super.onSupportNavigateUp();
     }
     public void onBackPressed(){
-        startActivity(new Intent(HomePageActivity.this, UserLoginActivity.class));
+        startActivity(new Intent(HomePageActivity.this, UserHomeActivity.class));
     }
     public static void getOrder(){
         databaseOrders=FirebaseDatabase.getInstance().getReference("orders");

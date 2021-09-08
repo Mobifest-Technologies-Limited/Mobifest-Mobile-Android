@@ -47,12 +47,7 @@ class UserLoginActivity : AppCompatActivity() {
         userName = userNameEt.text.toString()
         userPassword = passwordEt.text.toString()
         if (userName == "user123" && userPassword == "user123") {
-            val i = Intent(this@UserLoginActivity, UserHomeActivity::class.java)
-            i.putExtra("NAME", userName)
-            i.putExtra("PHONE", userName)
-            i.putExtra("PASSWORD", userPassword)
-            i.putExtra("CALLINGACTIVITY", "LoginPage")
-            startActivity(i)
+           startActivity(Intent(this@UserLoginActivity, UserHomeActivity::class.java))
         } else {
             status!!.text = "Invalid Credentials"
         }
