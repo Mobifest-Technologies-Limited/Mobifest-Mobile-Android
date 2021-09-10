@@ -8,10 +8,11 @@ class ResetPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reset_password)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this@ResetPasswordActivity, UserLoginActivity::class.java))
+        startActivity(Intent(this@ResetPasswordActivity, LoginActivity::class.java))
     }
 
     companion object {

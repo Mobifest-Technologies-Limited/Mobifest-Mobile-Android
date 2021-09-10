@@ -9,10 +9,12 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         val timer = Timer()
         timer.schedule(object : TimerTask() {
             override fun run() {
-                startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
+                startActivity(Intent(this@SplashScreenActivity,
+                        MainActivity::class.java))
             }
         }, 2000)
     }

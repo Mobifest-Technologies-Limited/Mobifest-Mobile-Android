@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-import co.mobifest.mobile.ui.shopping.HomePageActivity;
+import co.mobifest.mobile.ui.shopping.ShoppingUserHomeActivity;
 
 
 public class Books extends AppCompatActivity {
@@ -37,7 +37,7 @@ public class Books extends AppCompatActivity {
         final String sna=getIntent().getStringExtra("NAME");
         final String sph=getIntent().getStringExtra("PHONE");
         final String spa=getIntent().getStringExtra("PASSWORD");
-        Intent intent=new Intent(Books.this, HomePageActivity.class);
+        Intent intent=new Intent(Books.this, ShoppingUserHomeActivity.class);
         intent.putExtra("NAME",sna);
         intent.putExtra("PHONE",sph);
         intent.putExtra("PASSWORD",spa);

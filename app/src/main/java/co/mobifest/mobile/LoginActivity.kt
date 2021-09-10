@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import co.mobifest.mobile.ui.UserHomeActivity
 import com.google.android.material.button.MaterialButton
 
-class UserLoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     lateinit var userNameEt: EditText
     lateinit var passwordEt: EditText
     lateinit var loginBtn: MaterialButton
@@ -20,7 +20,9 @@ class UserLoginActivity : AppCompatActivity() {
     var status: TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_page)
+        setContentView(R.layout.activity_login)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         userNameEt = findViewById(R.id.login_user_name)
         passwordEt = findViewById(R.id.login_user_password)
         loginBtn = findViewById(R.id.btnlogin)
@@ -47,7 +49,7 @@ class UserLoginActivity : AppCompatActivity() {
         userName = userNameEt.text.toString()
         userPassword = passwordEt.text.toString()
         if (userName == "user123" && userPassword == "user123") {
-           startActivity(Intent(this@UserLoginActivity, UserHomeActivity::class.java))
+           startActivity(Intent(this@LoginActivity, UserHomeActivity::class.java))
         } else {
             status!!.text = "Invalid Credentials"
         }
@@ -55,15 +57,15 @@ class UserLoginActivity : AppCompatActivity() {
     }
 
     private fun loadRegisterPage() {
-        startActivity(Intent(this@UserLoginActivity, UserRegisterActivity::class.java))
+        startActivity(Intent(this@LoginActivity, UserRegisterActivity::class.java))
     }
 
     private fun loadPasswordResetPage() {
-        startActivity(Intent(this@UserLoginActivity, ResetPasswordActivity::class.java))
+        startActivity(Intent(this@LoginActivity, ResetPasswordActivity::class.java))
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this@UserLoginActivity, MainActivity::class.java))
+        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
     }
 
     companion object {

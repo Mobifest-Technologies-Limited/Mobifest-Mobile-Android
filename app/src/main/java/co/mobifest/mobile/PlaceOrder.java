@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import co.mobifest.mobile.ui.shopping.HomePageActivity;
+import co.mobifest.mobile.ui.shopping.ShoppingUserHomeActivity;
 
 public class PlaceOrder extends AppCompatActivity {
 TextView cname,cphone,ordspec,ordError,ordprice;
@@ -67,7 +67,7 @@ static DatabaseReference databaseOrders;
                                     Orders orders=new Orders(id,it,n,ph,addr.getText().toString(),pa,itp);
                                     databaseOrders.child(id).setValue(orders);
                                     show();
-                                    Intent i=new Intent(PlaceOrder.this, HomePageActivity.class);
+                                    Intent i=new Intent(PlaceOrder.this, ShoppingUserHomeActivity.class);
                                     i.putExtra("NAME",n);
                                     i.putExtra("PHONE",ph);
                                     i.putExtra("PASSWORD",pa);

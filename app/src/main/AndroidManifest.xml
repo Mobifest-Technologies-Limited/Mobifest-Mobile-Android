@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/mob_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.locomotive.LocomotiveHomeActivity"></activity>
+        <activity android:name=".ui.rentals.RentalsHomeActivity" />
         <activity android:name=".About" />
         <activity android:name=".AddStock" />
         <activity android:name=".Shoes" />
@@ -31,17 +33,15 @@
         <activity android:name=".AdminHomePage" />
         <activity android:name=".AdminLogin" />
         <activity
-            android:name=".ui.shopping.HomePageActivity"
+            android:name=".ui.shopping.ShoppingUserHomeActivity"
             android:label="@string/title_activity_home_page"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ui.UserHomeActivity"
             android:label="@string/title_activity_home_page"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".UserRegisterActivity" />
-        <activity android:name=".UserLoginActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashScreenActivity">
