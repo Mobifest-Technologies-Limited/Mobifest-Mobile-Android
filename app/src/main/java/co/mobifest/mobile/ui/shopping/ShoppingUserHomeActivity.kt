@@ -2,96 +2,48 @@ package co.mobifest.mobile.ui.shopping
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.widget.Button
-import android.widget.Toast
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.navigation.Navigation
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import co.mobifest.mobile.*
 import co.mobifest.mobile.ui.UserHomeActivity
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ShoppingUserHomeActivity : AppCompatActivity() {
-    private lateinit var clothing: Button
-    private lateinit var electronics: Button
-    private lateinit var books: Button
-    private lateinit var otherItems: Button
-    private var mAppBarConfiguration: AppBarConfiguration? = null
+class ShoppingUserHomeActivity : AppCompatActivity(),
+        BottomNavigationView.OnNavigationItemSelectedListener {
+    lateinit var fragmentManager: FragmentManager
+    private lateinit var bottomNavigationView: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shopping_user_home)
         val toolbar = findViewById<Toolbar>(R.id.user_home_toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        clothing = findViewById<Button>(R.id.clothing)
-        electronics = findViewById(R.id.electronics)
-        books = findViewById(R.id.books)
-        otherItems = findViewById(R.id.otherItems)
+        bottomNavigationView = findViewById(R.id.shopping_user_home_bottom_navigation_view)
+        fragmentManager = supportFragmentManager
+        bottomNavigationView.setOnNavigationItemSelectedListener(this)
+        loadBottomNavigationView(DashboardFragment())
 
-
-        val sna = intent.getStringExtra("NAME")
-        val sph = intent.getStringExtra("PHONE")
-        val spa = intent.getStringExtra("PASSWORD")
-        val ca = intent.getStringExtra("CALLINGACTIVITY")
-        if (ca == "LoginPage") Toast.makeText(this, "Hello ,$sna!",
-                Toast.LENGTH_SHORT).show() else if (ca == "PlaceOrder")
-            Toast.makeText(this, "Order Placed Successfully!",
-                    Toast.LENGTH_LONG).show()
-        clothing.setOnClickListener {
-            val intent = Intent(this@ShoppingUserHomeActivity, Clothing::class.java)
-            intent.putExtra("NAME", sna)
-            intent.putExtra("PHONE", sph)
-            intent.putExtra("PASSWORD", spa)
-            startActivity(intent)
-        }
-        electronics.setOnClickListener {
-            val intent = Intent(this@ShoppingUserHomeActivity, Electronics::class.java)
-            intent.putExtra("NAME", sna)
-            intent.putExtra("PHONE", sph)
-            intent.putExtra("PASSWORD", spa)
-            startActivity(intent)
-        }
-        books.setOnClickListener {
-            val intent = Intent(this@ShoppingUserHomeActivity, Books::class.java)
-            intent.putExtra("NAME", sna)
-            intent.putExtra("PHONE", sph)
-            intent.putExtra("PASSWORD", spa)
-            startActivity(intent)
-        }
-        otherItems.setOnClickListener {
-            val intent = Intent(this@ShoppingUserHomeActivity, OtherItems::class.java)
-            intent.putExtra("NAME", sna)
-            intent.putExtra("PHONE", sph)
-            intent.putExtra("PASSWORD", spa)
-            startActivity(intent)
-        }
-        databaseOrders = FirebaseDatabase.getInstance().getReference("orders")
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.home_page, menu)
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.shopping_user_home_dashboard_bottom_nav -> loadBottomNavigationView(DashboardFragment())
+        }
         return true
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        return (NavigationUI.navigateUp(navController, mAppBarConfiguration!!)
-                || super.onSupportNavigateUp())
+    private fun loadBottomNavigationView(fragment: Fragment) {
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.shopping_user_home_container_frame_layout, fragment)
+        fragmentTransaction.commit()
     }
 
     override fun onBackPressed() {
         startActivity(Intent(this@ShoppingUserHomeActivity, UserHomeActivity::class.java))
-    }
-
-    companion object {
-        var databaseOrders: DatabaseReference? = null
-        val order: Unit
-            get() {
-                databaseOrders = FirebaseDatabase.getInstance().getReference("orders")
-            }
     }
 }

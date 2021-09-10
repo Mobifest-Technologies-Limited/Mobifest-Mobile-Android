@@ -21,12 +21,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include
-                layout="@layout/content_home_page"
-                android:padding="8dp" />
+            <FrameLayout
+                android:id="@+id/shopping_user_home_container_frame_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/shopping_user_home_bottom_navigation_view" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation_view"
+                android:id="@+id/shopping_user_home_bottom_navigation_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
