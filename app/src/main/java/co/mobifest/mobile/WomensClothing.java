@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import co.mobifest.mobile.ui.shopping.ShoppingUserHomeActivity;
 
 
 public class WomensClothing extends AppCompatActivity {
@@ -35,7 +36,7 @@ public class WomensClothing extends AppCompatActivity {
         final String sna=getIntent().getStringExtra("NAME");
         final String sph=getIntent().getStringExtra("PHONE");
         final String spa=getIntent().getStringExtra("PASSWORD");
-        Intent intent=new Intent(WomensClothing.this,HomePageActivity.class);
+        Intent intent=new Intent(WomensClothing.this, ShoppingUserHomeActivity.class);
         intent.putExtra("NAME",sna);
         intent.putExtra("PHONE",sph);
         intent.putExtra("PASSWORD",spa);

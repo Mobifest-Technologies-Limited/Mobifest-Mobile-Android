@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/appBackGroundColor"
+    android:background="@drawable/rounded_corner_white"
     android:orientation="vertical"
+    android:padding="4dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true">
 
@@ -40,6 +39,7 @@
                 android:layout_marginTop="4dp"
                 android:text="Welcome:"
                 android:textColor="@color/blackColor"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
                 app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
@@ -48,7 +48,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:background="@drawable/rounded_corner_white"
                 android:text="Moses Kamira"
                 android:textColor="@color/orangeColor"
                 android:textStyle="bold"
@@ -86,7 +85,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/whiteColor"
                 android:orientation="vertical">
 
                 <TextView
@@ -105,6 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:background="@color/appBackGroundColor"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -113,6 +112,7 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
+                android:padding="4dp"
                 app:cardCornerRadius="8dp"
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"
@@ -121,6 +121,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:id="@+id/locomotive_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/whiteColor"
@@ -142,6 +143,7 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
+                android:padding="4dp"
                 app:cardCornerRadius="8dp"
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"
@@ -150,6 +152,7 @@
                 app:layout_constraintTop_toTopOf="@+id/locomotive_card_view">
 
                 <LinearLayout
+                    android:id="@+id/rentals_link_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/whiteColor"
@@ -171,6 +174,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:background="@color/appBackGroundColor"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -179,6 +183,7 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
+                android:padding="4dp"
                 app:cardCornerRadius="8dp"
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"
@@ -187,6 +192,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:id="@+id/shopping_link_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/whiteColor"
@@ -208,6 +214,7 @@
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_weight="1"
+                android:padding="4dp"
                 app:cardCornerRadius="8dp"
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"
@@ -237,7 +244,8 @@
             android:id="@+id/rentals_card_view"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            app:cardCornerRadius="8dp"
+            android:background="@color/appBackGroundColor"
+            app:cardCornerRadius="4dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true">
 

@@ -10,13 +10,14 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class UserRegisterActivity : AppCompatActivity() {
-    lateinit var etname: EditText
-    lateinit var etphone: EditText
-    lateinit var etpass: EditText
+    private lateinit var etname: EditText
+    private lateinit var etphone: EditText
+    private lateinit var etpass: EditText
     lateinit var registerButton: MaterialButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_register)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         databaseUsers = FirebaseDatabase.getInstance().getReference("memberReg")
         registerButton = findViewById(R.id.btnregister)
         etname = findViewById(R.id.etName)

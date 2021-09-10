@@ -6,22 +6,23 @@ import android.os.Process
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
-    var log: MaterialButton? = null
+    private lateinit var logInButton: MaterialButton
     var admlog: TextView? = null
     var stflog: TextView? = null
     var about: TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        log = findViewById(R.id.btnlog)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        logInButton = findViewById(R.id.btnlog)
         admlog = findViewById(R.id.admlog)
         stflog = findViewById(R.id.stflog)
         about = findViewById(R.id.tvAbout)
-        log!!.setOnClickListener {
-            val intent = Intent(this@MainActivity, UserLoginActivity::class.java)
-            startActivity(intent)
+        logInButton.setOnClickListener {
+            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
         }
         admlog!!.setOnClickListener { startActivity(Intent(this@MainActivity, AdminLogin::class.java)) }
         stflog!!.setOnClickListener { startActivity(Intent(this@MainActivity, StaffLogin::class.java)) }
@@ -31,6 +32,6 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         moveTaskToBack(true)
         Process.killProcess(Process.myPid())
-        System.exit(1)
+        exitProcess(1)
     }
 }
