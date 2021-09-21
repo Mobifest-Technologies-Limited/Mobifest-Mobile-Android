@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackGroundColor"
+    android:paddingBottom="16dp"
+    tools:context=".ui.shopping.DashboardFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/shopping_user_search_bar"
+            style="@style/MaterialSearchBarLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/appBackGroundColor"
+            android:elevation="5dp"
+            android:outlineProvider="bounds"
+            android:padding="4dp"
+            app:mt_navIconEnabled="false"
+            app:mt_placeholder="Search For Product"
+            app:mt_speechMode="false" />
+
+        <RelativeLayout
+            android:id="@+id/category_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shopping_user_search_bar"
+            android:background="@drawable/rounded_corner_white"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/category_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="Category:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/category__spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/category_head"
+                android:padding="4dp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/products_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/category_layout"
+            android:clipToPadding="false"
+            android:padding="4dp" />
+
+    </RelativeLayout>
+
+</FrameLayout>

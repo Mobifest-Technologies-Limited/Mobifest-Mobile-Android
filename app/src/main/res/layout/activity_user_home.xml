@@ -21,8 +21,9 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/content_user_home"
-                android:padding="8dp"/>
+            <include
+                layout="@layout/content_user_home"
+                android:padding="8dp" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation_view"

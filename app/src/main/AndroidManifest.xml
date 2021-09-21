@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/mob_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.locomotive.LocomotiveHomeActivity"></activity>
+        <activity android:name=".ui.locomotive.LocomotiveHomeActivity"/>
         <activity android:name=".ui.rentals.RentalsHomeActivity" />
         <activity android:name=".About" />
         <activity android:name=".AddStock" />

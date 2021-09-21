@@ -7,9 +7,6 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.navigation.Navigation
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import co.mobifest.mobile.ui.shopping.ShoppingUserHomeActivity
 import co.mobifest.mobile.LoginActivity
 import co.mobifest.mobile.R
@@ -19,7 +16,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class UserHomeActivity : AppCompatActivity() {
-    private val mAppBarConfiguration: AppBarConfiguration? = null
     private lateinit var shoppingLinkLayout: LinearLayout
     private lateinit var rentalsLinkLayout: LinearLayout
     private lateinit var locomotiveLayout: LinearLayout
@@ -81,12 +77,6 @@ class UserHomeActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.home_page, menu)
         return true
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        return (NavigationUI.navigateUp(navController, mAppBarConfiguration!!)
-                || super.onSupportNavigateUp())
     }
 
     override fun onBackPressed() {
