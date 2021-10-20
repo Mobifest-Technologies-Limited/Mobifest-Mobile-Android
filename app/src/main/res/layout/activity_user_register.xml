@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp"
-    tools:context=".UserRegisterActivity">
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    tools:context=".ui.UserRegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -45,11 +46,12 @@
             android:layout_height="wrap_content"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView21"
-            app:layout_constraintVertical_bias="0.10">
+            app:layout_constraintVertical_bias="0.04">
 
             <EditText
                 android:id="@+id/etName"
@@ -69,11 +71,12 @@
             android:layout_height="wrap_content"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-            app:layout_constraintVertical_bias="0.02">
+            app:layout_constraintVertical_bias="0.04">
 
             <EditText
                 android:layout_width="match_parent"
@@ -92,11 +95,12 @@
             android:layout_height="wrap_content"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-            app:layout_constraintVertical_bias="0.02">
+            app:layout_constraintVertical_bias="0.04">
 
             <EditText
                 android:layout_width="match_parent"
@@ -116,11 +120,12 @@
             android:layout_height="wrap_content"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
-            app:layout_constraintVertical_bias="0.02">
+            app:layout_constraintVertical_bias="0.04">
 
             <EditText
                 android:id="@+id/etPhone"
@@ -144,11 +149,12 @@
             android:textStyle="bold"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"
-            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintVertical_bias="0.04"
             app:passwordToggleDrawable="@drawable/eye_password"
             app:passwordToggleEnabled="true">
 
@@ -172,11 +178,12 @@
             android:textStyle="bold"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pass_word_layout"
-            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintVertical_bias="0.04"
             app:passwordToggleDrawable="@drawable/eye_password"
             app:passwordToggleEnabled="true">
 
@@ -198,12 +205,15 @@
             android:background="@drawable/rounded_corner_button"
             android:padding="8dp"
             android:text="Create Account"
-            android:textAllCaps="false"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:stateListAnimator="@null"
+            app:cornerRadius="32dp"
             android:textColor="@color/whiteColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
-            app:layout_constraintVertical_bias="0.20" />
+            app:layout_constraintVertical_bias="0.04" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

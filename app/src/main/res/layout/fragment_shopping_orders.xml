@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.shopping.ShoppingOrdersFragment">
+
+    <RelativeLayout
+        android:id="@+id/shopping_order_toggle_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_corner_white"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/open_orders_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/open_orders"
+            android:textColor="@color/orangeColor"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/closed_orders_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/open_orders_tv"
+            android:padding="8dp"
+            android:text="@string/closed_orders"
+            android:textColor="@color/blackColor"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shopping_orders_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shopping_order_toggle_layout"
+        android:clipToPadding="false"
+        android:padding="8dp" />
+
+</RelativeLayout>

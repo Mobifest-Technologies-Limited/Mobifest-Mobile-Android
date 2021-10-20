@@ -17,4 +17,30 @@
     <string name="title_activity_place_order">PlaceOrderActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open_nav_drawer">Open Nav</string>
+    <string name="close_nav_drawer">Close Nav</string>
+
+    <string name="sign_in">Sign In</string>
+    <string name="new_user_register_here">New User? Register Here</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="username">Email</string>
+    <string name="logo">Logo</string>
+    <string name="password">Password</string>
+    <string name="category">CATEGORY:</string>
+    <string name="product_image">Product Image</string>
+    <string name="add_watchlist_icon">Add Watchlist Icon</string>
+    <string name="ugx_45_000">UGX: 45,000</string>
+    <string name="view">View</string>
+    <string name="company_title">MOBIFEST</string>
+    <string name="ugx">UGX:</string>
+    <string name="complete_your_order">PLACE YOUR ORDER</string>
+    <string name="edit_address_details">Edit Address Details</string>
+    <string name="submit">Submit</string>
+    <string name="email">Email</string>
+    <string name="reset_password_sub_head">Enter the email address associated to your Account at Mobifest</string>
+    <string name="reset_password_head">Forgotten Your Password?</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="open_orders">OPEN ORDERS</string>
+    <string name="closed_orders">CLOSED ORDERS</string>
+    <string name="rental">Rental</string>
 </resources>

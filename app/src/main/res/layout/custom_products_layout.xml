@@ -1,71 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/products_custom_card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/products_custom_card_view"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="4dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/product_image_layout"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/product_image"
                 android:src="@drawable/shoe1" />
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/textBlackColor"
-            android:backgroundTint="@color/appBackGroundColor" />
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/product_image_layout"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="8dp">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_favorite_border_24" />
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/add_watchlist_icon"
+                    android:src="@drawable/ic_baseline_favorite_border_24" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/product_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/prod_price_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ugx"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/product_price_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/prod_price_tv"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/shipment_status_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_ship_status"
+                android:textColor="@color/whiteColor"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/view_product_details_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/orangeColor"
+                android:text="@string/view"
+                android:stateListAnimator="@null"
+                app:cornerRadius="8dp"/>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/product_name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="14dp"
-            android:text="Product Name" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UGX: 45,000"
-            android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/orangeColor"
-            android:text="Add To Cart"/>
-
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

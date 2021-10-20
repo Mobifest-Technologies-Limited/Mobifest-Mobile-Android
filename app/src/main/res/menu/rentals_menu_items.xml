@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/rentals_appartment_bottom_nav"
+        android:title="Home" />
+    <item
+        android:id="@+id/rentals_villas_bottom_nav"
+        android:title="Detail" />
+    <item
+        android:id="@+id/rentals_duplex_bottom_nav"
+        android:title="Duplex" />
+    <item
+        android:id="@+id/rentals_studio_bottom_nav"
+        android:title="Studio" />
+    <item
+        android:id="@+id/rentals_bungalow_bottom_nav"
+        android:title="Bungalow" />
+</menu>

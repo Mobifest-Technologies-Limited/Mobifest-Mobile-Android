@@ -6,19 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import co.mobifest.mobile.models.Category
+import co.mobifest.mobile.models.ProductCategory
 
 
-class CategorySpinnerAdapter(context: Context, resource: Int, categories: ArrayList<Category>) :
-        ArrayAdapter<Category>(context, resource, categories) {
-    private val categorySpinnerItems: ArrayList<Category> = categories
+class CategorySpinnerAdapter(
+    context: Context,
+    resource: Int,
+    categories: ArrayList<ProductCategory>
+) :
+    ArrayAdapter<ProductCategory>(context, resource, categories) {
+    private val categorySpinnerItems: ArrayList<ProductCategory> = categories
 
 
     override fun getCount(): Int {
         return categorySpinnerItems.size
     }
 
-    override fun getItem(position: Int): Category {
+    override fun getItem(position: Int): ProductCategory {
         return categorySpinnerItems[position]
     }
 
@@ -38,6 +42,7 @@ class CategorySpinnerAdapter(context: Context, resource: Int, categories: ArrayL
         val label = TextView(context)
         label.setTextColor(Color.BLACK)
         label.textSize = 16f
+        label.setPadding(16,8,16,8)
         label.text = categorySpinnerItems[position].catName
         return label
     }
