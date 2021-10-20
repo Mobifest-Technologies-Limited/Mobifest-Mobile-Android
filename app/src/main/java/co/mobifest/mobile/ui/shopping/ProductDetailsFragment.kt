@@ -1,11 +1,23 @@
 package co.mobifest.mobile.ui.shopping
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SnapHelper
 import co.mobifest.mobile.R
+import co.mobifest.mobile.adapter.ProductAdapter
+import co.mobifest.mobile.adapter.ProductImageAdapter
+import co.mobifest.mobile.models.ProductImage
+import co.mobifest.mobile.utils.StartSnapHelper
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -13,6 +25,10 @@ private const val ARG_PARAM2 = "param2"
 class ProductDetailsFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var productImagesRecyclerView: RecyclerView
+    private lateinit var productImagesList: ArrayList<ProductImage>
+    private lateinit var snapHelperStart: SnapHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +41,49 @@ class ProductDetailsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_product_details, container, false)
-
-
+        productImagesRecyclerView = view.findViewById(R.id.product_images_recycler_view)
+        productImagesList = ArrayList()
+        snapHelperStart = StartSnapHelper()
+        productImagesList.add(ProductImage("testingone"))
+        productImagesList.add(ProductImage("testingTwo"))
+        productImagesList.add(ProductImage("testingone"))
+        productImagesList.add(ProductImage("testingTwo"))
+        initializeProductImagesRecyclerView()
         return view
     }
+
+
+    private fun initializeProductImagesRecyclerView() {
+        val productAdapter = ProductImageAdapter(requireContext(), productImagesList)
+        productImagesRecyclerView.adapter = productAdapter
+        productImagesRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
+                RecyclerView.HORIZONTAL, false)
+        productImagesRecyclerView.setHasFixedSize(true)
+        snapHelperStart.attachToRecyclerView(productImagesRecyclerView)
+//        hanldeAutoScroll(productImagesList, productImagesRecyclerView, productAdapter)
+
+
+    }
+
+    private fun hanldeAutoScroll(imageList: ArrayList<ProductImage>, recyclerView: RecyclerView, adapter: ProductImageAdapter) {
+        var position = 0
+        val duration = 2000
+        val mHandler = Handler(Looper.getMainLooper())
+        val SCROLLING_RUNNABLE: Runnable = object : Runnable {
+            override fun run() {
+                position++
+                if (position < imageList.size) {
+                    recyclerView.scrollToPosition(position)
+                    adapter .notifyDataSetChanged()
+                } else if (position == imageList.size) {
+                    position = -1
+                }
+                mHandler.postDelayed(this, duration.toLong())
+            }
+        }
+        mHandler.postDelayed(SCROLLING_RUNNABLE, 2000)
+    }
+
 
     companion object {
         @JvmStatic
