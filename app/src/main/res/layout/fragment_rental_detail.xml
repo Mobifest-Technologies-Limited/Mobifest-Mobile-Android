@@ -224,19 +224,10 @@
                 android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/rental_details_currency_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/textBlackColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:id="@+id/rental_detail_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_toEndOf="@+id/rental_details_currency_tv"
                     android:textColor="@color/textBlackColor"
                     android:textSize="18sp"
                     android:textStyle="bold" />

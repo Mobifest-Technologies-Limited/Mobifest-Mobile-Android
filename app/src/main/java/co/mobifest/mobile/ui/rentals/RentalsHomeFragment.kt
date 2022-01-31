@@ -45,6 +45,12 @@ class RentalsHomeFragment : Fragment() {
     private lateinit var studioHelperStart: SnapHelper
     private lateinit var bunglowHelperStart: SnapHelper
 
+    private lateinit var apartmentAdapter: RentalsAdapter
+    private lateinit var villasAdapter: RentalsAdapter
+    private lateinit var duplexAdapter: RentalsAdapter
+    private lateinit var studioAdapter: RentalsAdapter
+    private lateinit var bunglowAdapter: RentalsAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +81,13 @@ class RentalsHomeFragment : Fragment() {
         duplexList = ArrayList()
         studioList = ArrayList()
         bunglowList = ArrayList()
+
+        apartmentAdapter = RentalsAdapter(requireContext(), apartmentList)
+        villasAdapter = RentalsAdapter(requireContext(), villasList)
+        duplexAdapter = RentalsAdapter(requireContext(), duplexList)
+        studioAdapter = RentalsAdapter(requireContext(), studioList)
+        bunglowAdapter = RentalsAdapter(requireContext(), bunglowList)
+
         apartmentHelperStart = StartSnapHelper()
         villasHelperStart = StartSnapHelper()
         duplexHelperStart = StartSnapHelper()
@@ -110,8 +123,8 @@ class RentalsHomeFragment : Fragment() {
                 true,
                 true,
                 56700F,
-                "12m",
                 "KES",
+                "12m",
                 "This is a new house located in Namuwongo, Kampala, Uganda",
                 "Two BedRooms", "12543", "Kampala", false,
                 1, 1, 1
@@ -187,79 +200,78 @@ class RentalsHomeFragment : Fragment() {
         )
 
         for (rental in rentalResponse) {
-            if (rental.rentalType == "Apartment") {
-                apartmentTv.visibility = View.VISIBLE
-                apartmentTv.text = "Apartments"
-                apartmentList.add(rental)
-            } else if (rental.rentalType == "Studio") {
-                studioTv.visibility = View.VISIBLE
-                studioTv.text = "Studio"
-                studioList.add(rental)
-            } else if (rental.rentalType == "Villa") {
-                villaTv.visibility = View.VISIBLE
-                villaTv.text = "Villas"
-                villasList.add(rental)
+            when (rental.rentalType) {
+                "Apartment" -> {
+                    apartmentTv.visibility = View.VISIBLE
+                    apartmentTv.text = "Apartments"
+                    apartmentList.add(rental)
+                }
+                "Studio" -> {
+                    studioTv.visibility = View.VISIBLE
+                    studioTv.text = "Studio"
+                    studioList.add(rental)
+                }
+                "Villa" -> {
+                    villaTv.visibility = View.VISIBLE
+                    villaTv.text = "Villas"
+                    villasList.add(rental)
 
-            } else if (rental.rentalType == "Duplex") {
-                duplexTv.visibility = View.VISIBLE
-                duplexTv.text = "Duplex"
-                duplexList.add(rental)
+                }
+                "Duplex" -> {
+                    duplexTv.visibility = View.VISIBLE
+                    duplexTv.text = "Duplex"
+                    duplexList.add(rental)
 
-            } else {
-                bunglowTv.visibility = View.VISIBLE
-                bunglowTv.text = "Bunglow"
-                bunglowList.add(rental)
+                }
+                else -> {
+                    bunglowTv.visibility = View.VISIBLE
+                    bunglowTv.text = "Bunglow"
+                    bunglowList.add(rental)
+                }
             }
         }
 
-        initializeApartmentRecyclerView(apartmentList)
-        initializeStudioRecyclerView(studioList)
-        initializeVillasRecyclerView(villasList)
-        initializeDuplexRecyclerView(duplexList)
-        initializeBunglowRecyclerView(bunglowList)
-
-
+        initializeApartmentRecyclerView()
+        initializeStudioRecyclerView()
+        initializeVillasRecyclerView()
+        initializeDuplexRecyclerView()
+        initializeBunglowRecyclerView()
     }
 
-    private fun initializeApartmentRecyclerView(list: ArrayList<Rental>) {
-        val rentalAdapter = RentalsAdapter(requireContext(), list)
-        apartmentRecyclerview.adapter = rentalAdapter
+    private fun initializeApartmentRecyclerView() {
+        apartmentRecyclerview.adapter = apartmentAdapter
         apartmentRecyclerview.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         apartmentRecyclerview.setHasFixedSize(true)
         apartmentHelperStart.attachToRecyclerView(apartmentRecyclerview)
     }
 
-    private fun initializeStudioRecyclerView(list: ArrayList<Rental>) {
-        val rentalAdapter = RentalsAdapter(requireContext(), list)
-        studioRecyclerview.adapter = rentalAdapter
+    private fun initializeStudioRecyclerView() {
+        studioRecyclerview.adapter = studioAdapter
         studioRecyclerview.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         studioRecyclerview.setHasFixedSize(true)
         studioHelperStart.attachToRecyclerView(studioRecyclerview)
     }
 
-    private fun initializeVillasRecyclerView(list: ArrayList<Rental>) {
-        val rentalAdapter = RentalsAdapter(requireContext(), list)
-        villasRecyclerView.adapter = rentalAdapter
+    private fun initializeVillasRecyclerView() {
+        villasRecyclerView.adapter = villasAdapter
         villasRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         villasRecyclerView.setHasFixedSize(true)
         villasHelperStart.attachToRecyclerView(villasRecyclerView)
     }
 
-    private fun initializeDuplexRecyclerView(list: ArrayList<Rental>) {
-        val rentalAdapter = RentalsAdapter(requireContext(), list)
-        duplexRecyclerview.adapter = rentalAdapter
+    private fun initializeDuplexRecyclerView() {
+        duplexRecyclerview.adapter = duplexAdapter
         duplexRecyclerview.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         duplexRecyclerview.setHasFixedSize(true)
         duplexHelperStart.attachToRecyclerView(duplexRecyclerview)
     }
 
-    private fun initializeBunglowRecyclerView(list: ArrayList<Rental>) {
-        val rentalAdapter = RentalsAdapter(requireContext(), list)
-        bunglowRecyclerView.adapter = rentalAdapter
+    private fun initializeBunglowRecyclerView() {
+        bunglowRecyclerView.adapter = bunglowAdapter
         bunglowRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         bunglowRecyclerView.setHasFixedSize(true)
