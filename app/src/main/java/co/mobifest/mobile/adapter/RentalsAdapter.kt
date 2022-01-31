@@ -11,6 +11,7 @@ import co.mobifest.mobile.R
 import co.mobifest.mobile.models.Rental
 import co.mobifest.mobile.ui.rentals.RentalDetailFragment
 import co.mobifest.mobile.ui.rentals.RentalsActivity
+import co.mobifest.mobile.utils.AmountFormatter
 
 
 class RentalsAdapter(
@@ -35,7 +36,8 @@ class RentalsAdapter(
         val description = dataSet[position].description
         val rentalStatus = dataSet[position].status
         val location = dataSet[position].location
-        viewHolder.rentalPriceTv.text = "$currency: $rentalPrice"
+        viewHolder.rentalPriceTv.text = AmountFormatter.returnConcatenatedAmountCurrencyString(
+            AmountFormatter.getDecimalFormattedString(rentalPrice.toString()), currency)
         viewHolder.rentalDescriptionTv.text = description
         viewHolder.rentalStatusTv.text = rentalStatus
         viewHolder.rentalLocationTv.text = location
@@ -47,8 +49,6 @@ class RentalsAdapter(
         return View.OnClickListener{
             when(it) {
                 viewHolder.rentalImageView -> loadRentalDetailsFragment()
-
-
             }
         }
     }

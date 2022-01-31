@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import co.mobifest.mobile.R
 import co.mobifest.mobile.models.Rental
+import co.mobifest.mobile.utils.AmountFormatter
 import com.google.android.material.button.MaterialButton
 
 private const val ARG_PARAM1 = "param1"
@@ -27,7 +28,6 @@ class RentalDetailFragment : Fragment() {
     private lateinit var rentalCodeTv: TextView
     private lateinit var rentalInspectionTv: TextView
     private lateinit var rentalAvailabilityTv: TextView
-    private lateinit var rentalCurrencyTv: TextView
     private lateinit var rentalPriceTv: TextView
     private lateinit var parkingCountTv: TextView
     private lateinit var bathroomCountTv: TextView
@@ -55,7 +55,6 @@ class RentalDetailFragment : Fragment() {
         rentalCodeTv = view.findViewById(R.id.rental_detail_code)
         rentalInspectionTv = view.findViewById(R.id.rental_detail_inspection)
         rentalAvailabilityTv = view.findViewById(R.id.rental_detail_availability)
-        rentalCurrencyTv = view.findViewById(R.id.rental_details_currency_tv)
         rentalPriceTv = view.findViewById(R.id.rental_detail_price)
         parkingCountTv = view.findViewById(R.id.parking_count_tv)
         bathroomCountTv = view.findViewById(R.id.bath_room_count_tv)
@@ -72,12 +71,12 @@ class RentalDetailFragment : Fragment() {
     }
 
     private fun fetchRentalDetails() {
-
         val rental = Rental(
             1, "Apartment", "Kampala, Uganda", "Brand New",
             true, true, 56700F, "UGX", "12m",
             "This is a new house located in kampala, Uganda", "Two BedRooms",
-            "12543", "Kampala", true, 3, 1, 2
+            "12543", "Kampala", false, 3, 1,
+            2
         )
         rentalDescriptionTv.text = rental.description
         rentalLocationTv.text = rental.location
@@ -87,16 +86,17 @@ class RentalDetailFragment : Fragment() {
         rentalCodeTv.text = rental.code
         if (rental.isInspectable) {
             rentalInspectionTv.text = "YES"
-        }else {
+        } else {
             rentalInspectionTv.text = "NO"
         }
         if (rental.isAvailable) {
             rentalAvailabilityTv.text = "AVAILABLE"
-        }else {
+        } else {
             rentalAvailabilityTv.text = "TAKEN"
         }
-        rentalCurrencyTv.text = rental.currency
-        rentalPriceTv.text = rental.price.toString()
+        rentalPriceTv.text = AmountFormatter.returnConcatenatedAmountCurrencyString(
+            AmountFormatter.getDecimalFormattedString(rental.price.toString()), rental.currency
+        )
         parkingCountTv.text = rental.parkingCount.toString()
         bathroomCountTv.text = rental.bathRoomCount.toString()
         bedroomCountTv.text = rental.bedRoomCount.toString()
@@ -104,7 +104,7 @@ class RentalDetailFragment : Fragment() {
 
     private fun returnOnClickListener(): View.OnClickListener {
         return View.OnClickListener {
-            when(it) {
+            when (it) {
                 rentalRequestButton -> submitRequest()
             }
 
@@ -113,10 +113,6 @@ class RentalDetailFragment : Fragment() {
     }
 
     private fun submitRequest() {
-//        val destinationFragment = RentalRequestFragment()
-//        (context as RentalsActivity).supportFragmentManager.beginTransaction()
-//            .replace(R.id.rentals_activity_container_frame_layout, destinationFragment)
-//            .commit()
     }
 
     private fun handleOnBackArrowClicked() {
