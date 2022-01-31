@@ -4,15 +4,20 @@
     <color name="colorPrimaryDark">#0071CE</color>
     <color name="colorAccent">#0071CE</color>
     <color name="blackColor">#000</color>
+    <color name="charcoalColor">#36454F</color>
+    <color name="lightGreenColor">#008000</color>
     <color name="grayColor">#a9a9a9</color>
     <color name="lightGrayColor">#fafafa</color>
     <color name="whiteColor">#fff</color>
-    <color name="appBackGroundColor">#D6DBDF</color>
+    <color name="appBackGroundColor">#EBF3FA</color>
+    <color name="bottomNavigationViewGroundColor">#D6DBDF</color>
     <color name="buttonBlueColor">#0071CE</color>
     <color name="blueColor">#0071ce</color>
     <color name="redColor">#FF0000</color>
     <color name="textBlackColor">#3F4254</color>
     <color name="orangeColor">#FFA500</color>
+    <color name="maroonColor">#800000</color>
+    <color name="shoppingLayoutColor">#800000</color>
 
 
 

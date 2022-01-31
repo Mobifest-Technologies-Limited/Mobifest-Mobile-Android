@@ -9,42 +9,20 @@
         android:roundIcon="@mipmap/mob_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.locomotive.LocomotiveHomeActivity"/>
-        <activity android:name=".ui.rentals.RentalsHomeActivity" />
-        <activity android:name=".About" />
-        <activity android:name=".AddStock" />
-        <activity android:name=".Shoes" />
-        <activity android:name=".BottomWear" />
-        <activity android:name=".Formals" />
-        <activity android:name=".tShirts" />
-        <activity android:name=".DisplayItem" />
-        <activity android:name=".WomensClothing" />
-        <activity android:name=".MensClothing" />
-        <activity android:name=".OtherItems" />
-        <activity android:name=".Books" />
-        <activity android:name=".Electronics" />
-        <activity android:name=".Clothing" />
-        <activity android:name=".CurrentOrderStatus" />
-        <activity android:name=".AcceptOrders" />
-        <activity android:name=".AddStaff" />
-        <activity android:name=".PlaceOrder" />
-        <activity android:name=".StaffLogin" />
-        <activity android:name=".StaffHomePage" />
-        <activity android:name=".AdminHomePage" />
-        <activity android:name=".AdminLogin" />
+        <activity android:name=".ui.locomotive.LocomotiveHomeActivity" />
         <activity
-            android:name=".ui.shopping.ShoppingUserHomeActivity"
-            android:label="@string/title_activity_home_page"
+            android:name=".ui.rentals.RentalsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.UserHomeActivity"
-            android:label="@string/title_activity_home_page"
+            android:name=".ui.shopping.ShoppingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UserRegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreenActivity">
+        <activity
+            android:name=".ui.home.UserHomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.UserRegisterActivity" />
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.ResetPasswordActivity" />
+        <activity android:name=".ui.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -43,7 +43,7 @@ class ProductImageAdapter(private val myContext: Context, private val dataSet: A
     private fun loadProductDetailsView() {
         val activity = myContext as AppCompatActivity
         activity.supportFragmentManager.beginTransaction()
-                .replace(R.id.shopping_user_home_container_frame_layout, ProductDetailsFragment())
+                .replace(R.id.shopping_activity_container_frame_layout, ProductDetailsFragment())
                 .commit()
 
     }

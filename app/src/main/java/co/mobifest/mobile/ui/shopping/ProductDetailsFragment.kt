@@ -6,16 +6,15 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import co.mobifest.mobile.R
-import co.mobifest.mobile.adapter.ProductAdapter
 import co.mobifest.mobile.adapter.ProductImageAdapter
 import co.mobifest.mobile.models.ProductImage
 import co.mobifest.mobile.utils.StartSnapHelper
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -29,6 +28,8 @@ class ProductDetailsFragment : Fragment() {
     private lateinit var productImagesRecyclerView: RecyclerView
     private lateinit var productImagesList: ArrayList<ProductImage>
     private lateinit var snapHelperStart: SnapHelper
+    lateinit var detailsOrigin: String
+    lateinit var shoppingActivity: ShoppingActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +37,19 @@ class ProductDetailsFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        if (this.requireArguments().getString("detailsOrigin") != null) {
+            detailsOrigin = this.requireArguments().getString("detailsOrigin", null)
+        }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_product_details, container, false)
         productImagesRecyclerView = view.findViewById(R.id.product_images_recycler_view)
+        shoppingActivity = context as ShoppingActivity
+        shoppingActivity.checkDashboard()
         productImagesList = ArrayList()
         snapHelperStart = StartSnapHelper()
         productImagesList.add(ProductImage("testingone"))
@@ -53,11 +61,37 @@ class ProductDetailsFragment : Fragment() {
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        handleOnBackArrowClicked()
+    }
+
+
+    private fun handleOnBackArrowClicked() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                controlKYCNavigation()
+            }
+        }
+        shoppingActivity.onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
+    private fun controlKYCNavigation() {
+        if (detailsOrigin == "savedItems") {
+            shoppingActivity.loadBottomNavigationView(MyItemsFragment())
+        } else if (detailsOrigin == "dashboard") {
+            shoppingActivity.loadBottomNavigationView(DashboardFragment())
+        }
+    }
+
+
     private fun initializeProductImagesRecyclerView() {
         val productAdapter = ProductImageAdapter(requireContext(), productImagesList)
         productImagesRecyclerView.adapter = productAdapter
-        productImagesRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
-                RecyclerView.HORIZONTAL, false)
+        productImagesRecyclerView.layoutManager = LinearLayoutManager(
+            requireContext(),
+            RecyclerView.HORIZONTAL, false
+        )
         productImagesRecyclerView.setHasFixedSize(true)
         snapHelperStart.attachToRecyclerView(productImagesRecyclerView)
 //        hanldeAutoScroll(productImagesList, productImagesRecyclerView, productAdapter)
@@ -65,7 +99,11 @@ class ProductDetailsFragment : Fragment() {
 
     }
 
-    private fun hanldeAutoScroll(imageList: ArrayList<ProductImage>, recyclerView: RecyclerView, adapter: ProductImageAdapter) {
+    private fun hanldeAutoScroll(
+        imageList: ArrayList<ProductImage>,
+        recyclerView: RecyclerView,
+        adapter: ProductImageAdapter
+    ) {
         var position = 0
         val duration = 2000
         val mHandler = Handler(Looper.getMainLooper())
@@ -74,7 +112,7 @@ class ProductDetailsFragment : Fragment() {
                 position++
                 if (position < imageList.size) {
                     recyclerView.scrollToPosition(position)
-                    adapter .notifyDataSetChanged()
+                    adapter.notifyDataSetChanged()
                 } else if (position == imageList.size) {
                     position = -1
                 }
@@ -88,11 +126,11 @@ class ProductDetailsFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-                ProductDetailsFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
+            ProductDetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
                 }
+            }
     }
 }
